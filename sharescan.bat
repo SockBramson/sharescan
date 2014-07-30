@@ -4,7 +4,7 @@ PATH=%PATH%;E:\
 SET /p inputfile="Server List: " %=%
 SET extension=%inputfile:~-3%
 SET filename=%inputfile:~0,-4%
-SET "outputfile=%filename%_Output.txt"
+SET "outputfile=Output.txt"
 IF %extension%==txt GOTO continue
 IF %extension%==TXT GOTO continue
 ECHO Incorrect entry, try again. 
