@@ -10,7 +10,17 @@ IF %extension%==TXT GOTO continue
 ECHO Incorrect entry, try again. 
 GOTO start
 :CONTINUE
+IF NOT EXIST %filename%\ (
+	MD %filename%
+	) ELSE (
+	ECHO Directory %filename already exists. 
+	PAUSE
+)
 ECHO Server List is %inputfile%
 ECHO Output File is %outputfile%
-cscript.exe E:\NVOpenShares.vbs %inputfile% %outputfile%
+COPY /Y %inputfile% %filename%\%inputfile%
+PUSHD %filename%
+CALL cscript.exe E:\NVOpenShares.vbs %inputfile% %outputfile%
+POPD
+ECHO %filename% complete
 PAUSE
